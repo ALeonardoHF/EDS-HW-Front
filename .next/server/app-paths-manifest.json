@@ -1,0 +1,10 @@
+{
+  "/not-found": "app/not-found.js",
+  "/(Login)/login/page": "app/(Login)/login/page.js",
+  "/icon.ico/route": "app/icon.ico/route.js",
+  "/(AdminPanel)/users/page": "app/(AdminPanel)/users/page.js",
+  "/(AdminPanel)/machine/page": "app/(AdminPanel)/machine/page.js",
+  "/(AdminPanel)/machine/[machineId]/page": "app/(AdminPanel)/machine/[machineId]/page.js",
+  "/(AdminPanel)/page": "app/(AdminPanel)/page.js",
+  "/(AdminPanel)/users/[userId]/page": "app/(AdminPanel)/users/[userId]/page.js"
+}

@@ -1,0 +1,50 @@
+{
+  "pages": {
+    "/(Login)/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(Login)/login/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/(AdminPanel)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/page.js"
+    ],
+    "/(AdminPanel)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/layout.js"
+    ],
+    "/(AdminPanel)/machine/[machineId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/machine/[machineId]/page.js"
+    ],
+    "/(AdminPanel)/users/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/users/page.js"
+    ],
+    "/(AdminPanel)/users/[userId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/users/[userId]/page.js"
+    ],
+    "/(AdminPanel)/machine/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/machine/page.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
+    ]
+  }
+}
