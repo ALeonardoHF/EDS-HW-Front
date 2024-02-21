@@ -37,6 +37,7 @@ export default function MachinesList() {
                                 <th className='table-header'>Expira</th>
                                 <th className='table-header'>Foto equipo</th>
                                 <th className='table-header'>Eliminar</th>
+                                {/* <th className='table-header'>Expiration Days</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +53,6 @@ export default function MachinesList() {
                                         <td className='text-left'>{dayjs(data?.last_calibration_date).format("DD MMM YYYY")}</td>
                                         <td className='text-left'>{dayjs(data?.expira).format("DD MMM YYYY")}</td>
                                         <td> <MachineImage alt={data.nomMaquina} getImage={getMachineImage} param={data?._id} status={data?.foto_equipo ? true : false} width={'150px'} height={'100px'} /></td>
-                                        
                                         <td><button className='btn btn-danger' onClick={(e) => deleteLogicMachine(data?._id, e)}>Eliminar</button></td>
                                     </tr>
                                 ))

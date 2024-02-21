@@ -1,15 +1,15 @@
 {
   "pages": {
-    "/(Login)/login/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(Login)/login/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/(Login)/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(Login)/login/page.js"
     ],
     "/(AdminPanel)/page": [
       "static/chunks/webpack.js",
@@ -21,25 +21,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(AdminPanel)/layout.js"
     ],
+    "/(AdminPanel)/machine/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(AdminPanel)/machine/page.js"
+    ],
     "/(AdminPanel)/machine/[machineId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(AdminPanel)/machine/[machineId]/page.js"
     ],
-    "/(AdminPanel)/users/page": [
+    "/guest/[machineId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(AdminPanel)/users/page.js"
-    ],
-    "/(AdminPanel)/users/[userId]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(AdminPanel)/users/[userId]/page.js"
-    ],
-    "/(AdminPanel)/machine/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(AdminPanel)/machine/page.js"
+      "static/chunks/app/guest/[machineId]/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

@@ -22,6 +22,47 @@ export async function getMachineById(id) {
             return err;
         })
 }
+
+// get machine by id no auth
+export async function getMachineByIdNoAuth(id) {
+    const url = `${envUrl}/machineCalibration/guest/id/${id}`;
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
+
+export async function generateQR(id) {
+    const url = `${envUrl}/machineCalibration/guest/qr/id/${id}`;
+    const token = await getToken();
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+            xtoken: token,
+            
+        },
+        responseType: 'blob',
+        
+    };
+
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
+
 //Get Machine List
 export async function getMachineListApi(page = 1, search = '', role = '', limit = 10) {
     // ?page=${page}&search=${search}&role=${role}&limit=${limit}
@@ -82,6 +123,24 @@ export async function getMachineImage(machineId) {
         })
 }
 
+export async function getMachineImageNoAuth(machineId) {
+    const url = `${envUrl}/machineCalibration/guest/image/${machineId}`;
+
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        responseType: 'blob',
+    };
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
+
 export async function getMachineTag(machineId) {
     const url = `${envUrl}/machineCalibration/tag/image/${machineId}`;
     const token = await getToken();
@@ -90,6 +149,24 @@ export async function getMachineTag(machineId) {
         headers: {
             'Content-Type': 'application/json',
             xtoken: token,
+        },
+        responseType: 'blob',
+    };
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
+
+export async function getMachineTagNoAuth(machineId) {
+    const url = `${envUrl}/machineCalibration/guest/tag/image/${machineId}`;
+
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
         },
         responseType: 'blob',
     };

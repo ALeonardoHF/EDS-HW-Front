@@ -13,18 +13,24 @@ const MachineHeader = () => {
 
     const [show, setShow] = useState(false)
 
+    const handleChange = (e) => {
+        setUrl(e.target.value);
+    }
+
     return (
-        <div className='mb-4'>
-            <div className='d-flex flex-column'>
-                <div className='d-flex flex-between'>
-                    <h2><b></b>Maquinas</h2>
-                    <button className='btn btn-action-primary' onClick={() => setShow(!show)}>Nueva Maquina</button>
+        <>
+            <div className='mb-4'>
+                <div className='d-flex flex-column'>
+                    <div className='d-flex flex-between'>
+                        <h2><b></b>Maquinas</h2>
+                        <button className='btn btn-action-primary' onClick={() => setShow(!show)}>Nueva Maquina</button>
+                    </div>
                 </div>
             </div>
-            <Modal title="Nuevo Empleado" show={show} setShow={setShow}>
+            <Modal title="Nueva Maquina" show={show} setShow={setShow}>
                 <MachineForm setShow={setShow} />
             </Modal>
-        </div>
+        </>
     )
 }
 

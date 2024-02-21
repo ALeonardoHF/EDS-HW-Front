@@ -9,12 +9,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation'
 import MachineImage from '../../shared/machines/MachineImages'
 import MachineTagImage from '../../shared/machines/MachineTagImage'
-import { getMachineImage, getMachineListApi, getCurrentMachine, getMachineTag } from '../../../api/machine';
+import { getMachineImage, getMachineListApi, getCurrentMachine, getMachineTag, generateQR } from '../../../api/machine';
 import { updateMachineByIdAction } from '@machineActions'
 import Loading from '@components/shared/Loading'
 import Modal from "@components/shared/Modal"
 import UpdateMachineImageForm from "./UpdateMachineImage"
 import UpdateMachineTagImageForm from "./UpdateMachineImageTag"
+import FileDownload from 'js-file-download'
 
 export default function MachineDetail() {
   dayjs.extend(utc)
@@ -36,6 +37,12 @@ export default function MachineDetail() {
 
   const setData = (e) => {
     setCurrentMachineState({ ...currentMachineState, [e.target.name]: e.target.value })
+  }
+
+  const downloadImage = () => {
+    generateQR(currentMachine?._id).then(response => {
+      FileDownload(response, `${currentMachine?.nomMaquina}.png`);
+    })
   }
 
   useEffect(() => {
@@ -88,6 +95,9 @@ export default function MachineDetail() {
 
 
       <ReturnButton router={router}>Regresar</ReturnButton>
+      <div className='d-flex flex-between mt-3'>
+      <button className='btn btn-action-primary w-50 ms-auto me-auto' onClick={() => {downloadImage()}}>Generar QR</button>
+      </div>
       {isChangeActive && <SaveButton updateCurrentMachine={updateCurrentMachine} />}
 
     </div>
@@ -109,5 +119,3 @@ function SaveButton({ updateCurrentMachine }) {
     </div>
   )
 }
-
-{/* <ListGroup.Item>Activo: <input type='checkbox' name='activo' onChange={(e) => setCurrentMachineState({...currentMachineState, activo: !currentMachineState?.activo})} checked={Boolean(currentMachineState?.activo)}/> </ListGroup.Item> */ }
