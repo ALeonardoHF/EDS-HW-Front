@@ -1,5 +1,5 @@
 import { getMachineListApi, getMachineById, deleteMachine, 
-        updateMachineByAdminApi, getAllMachineListApi, updateMachineImageApi, updateMachineTagImageApi, createMachineApi } from "@Api/machine"
+        updateMachineByAdminApi, getAllMachineListApi, updateMachineImageApi, updateMachineTagImageApi, createMachineApi, updateMachineCertificateApi } from "@Api/machine"
 import { setUserAuthData,setCurrentMachine,setCurrentMachineError,setCurrentMachineSuccess,setMachineAttachments,setMachineAttachmentsError,setMachineAttachmentsSuccess,setMachineList,setMachineListError,setMachineListSuccess, setMachineData } from '../slices/machineSlice'
 import { toast } from "react-toastify";
 import { ToastSuccess, ToastError } from '@components/shared/Toast';
@@ -96,12 +96,29 @@ export const getMachineListAction = () => {
         }
     }
 }
+
 export function updateMachineTagImageAction(id, file) {
     return async(dispatch) => {
         dispatch(setCurrentMachine())
         try {
             if (id) {
                 await updateMachineTagImageApi(id, file);
+                const response = await getMachineById(id);
+                dispatch(setCurrentMachineSuccess(response))
+            }
+        } catch (error) {
+            console.log(error);
+            dispatch(setCurrentMachineError({error: `Error: ${error} `}))
+        }
+    }
+}
+
+export function updateMachineCertificateAction(id, file) {
+    return async(dispatch) => {
+        dispatch(setCurrentMachine())
+        try {
+            if (id) {
+                await updateMachineCertificateApi(id, file);
                 const response = await getMachineById(id);
                 dispatch(setCurrentMachineSuccess(response))
             }

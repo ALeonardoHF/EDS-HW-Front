@@ -35,9 +35,9 @@ export default function NavBar() {
                     <div className='d-flex align-items-center'>
                         <Link href='/' passHref >
                             <div className='d-md-flex flex-md-column align-items-center'>
-                                <div className='position-image'>
-                                    <Image alt="logo" className='logo-style' src="/app-logo.png" fill sizes="" />
-                                </div>
+                                {/* <div className='position-image'>
+                                    <Image alt="logo" className='logo-style' src="/favicon.ico" fill sizes="" />
+                                </div> */}
                                 <span className="text-light mt-3 name-user">{auth?.role?.role}</span>
                             </div>
                         </Link>

@@ -7,6 +7,7 @@ const nextConfig = {
       },
       env: {
         development: "http://localhost:8010",
+        production: "https://honeywell-calibration.gamuraa.com/",
         ACCESS_TOKEN: "accessToken",//'CREATE', 'UPDATE', 'DELETE', 'ACTIVE'
       },
       images: {

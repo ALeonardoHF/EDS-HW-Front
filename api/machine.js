@@ -179,31 +179,51 @@ export async function getMachineTagNoAuth(machineId) {
         })
 }
 
-//Get Users List
-// export async function getUserInfoListApi() {
-//     const url = `${envUrl}/user/info`
-//     const token = await getToken();
-//     const params = {
-//         headers: {
-//             'Content-Type': 'application/json',
-//             xtoken: token
-//         }
-//     }
-//     return axios.get(url, params)
-//         .then(response => {
-//             return response.data;
-//         })
-//         .catch(err => {
-//             return err;
-//         })
-// }
+// no auth
+export async function getMachineCertificateNoAuth(machineId) {
+    const url = `${envUrl}/machineCalibration/guest/certificate/${machineId}`;
+
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        responseType: 'blob',
+    };
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
+
+export async function getMachineCertificate(machineId) {
+    const url = `${envUrl}/machineCalibration/certificate/${machineId}`;
+    const token = await getToken();
+
+    const params = {
+        headers: {
+            'Content-Type': 'application/json',
+            xtoken: token,
+        },
+        responseType: 'blob',
+    };
+    return axios.get(url, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+}
 
 export async function createMachineApi(data) {
     const url = `${envUrl}/machineCalibration`
     const token = await getToken();
     const params = {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             xtoken: token
         }
     }
@@ -233,14 +253,15 @@ export async function updateMachineByAdminApi(data) {
     const token = await getToken();
     const params = {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             xtoken: token
         }
     }
 
     const formData = new FormData();
     for (let key in data) {
-        if (data.hasOwnProperty(key)) {
+        if (data.hasOwnProperty(key)) { 
+          console.log(`Key: ${key} `, `${data[key]}`)
           formData.append(key, data[key]);
         }
       }
@@ -301,6 +322,28 @@ export async function updateMachineTagImageApi(id, file) {
     const token = await getToken();
     const formData = new FormData()
     formData.append('foto_etiqueta_calibracion', file);
+
+    const params = {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+            xtoken: token
+        }
+    };
+    return axios.put(url, formData, params)
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => {
+            return err;
+        })
+
+}
+
+export async function updateMachineCertificateApi(id, file) {
+    const url = `${envUrl}/machineCalibration/updatebyadmin/${id}`;
+    const token = await getToken();
+    const formData = new FormData()
+    formData.append('certificado', file);
 
     const params = {
         headers: {

@@ -42,17 +42,17 @@ export default function Header() {
                 <div className='menu-list' onClick={toggleClass}>
                     <i className="bi bi-list"></i>
                 </div>
-                {/* <button type={'button'} className='nav-header_avatar flex-between border-0 bg-transparent' onClick={() => setshow(!show)}>
+                <button type={'button'} className='nav-header_avatar flex-between border-0 bg-transparent' onClick={() => setshow(!show)}>
                     <div className='my-auto'>
                         <span className='text-white me-2'>{Name}</span>
                     </div>
-                    <div className='my-auto pointer me-2'>
+                    {/* <div className='my-auto pointer me-2'>
                         <Avatar param={user ? user.idUser : null} width={'40px'} height={'40px'} />
-                    </div>
+                    </div> */}
                     <i className='fa-solid fa-chevron-down text-white my-auto'></i>
 
                     <ProfileBox show={show} setshow={setshow} logout={logout} auth={auth} />
-                </button> */}
+                </button>
             </div>
         </header>
     );
@@ -63,22 +63,22 @@ export const ProfileBox = ({ show, setshow, logout, auth }) => {
     const Name = auth?.firstName + ' ' + auth?.lastName;
     return (
         <div ref={ref} className={show ? "menu-pop active bg-secondary" : "menu-pop bg-secondary"}>
-            <Link href={`/users/${auth?.idUser}`} passHref >
+            {/* <Link href={`/users/${auth?.idUser}`} passHref >
                 <div className='profile_info'>
                     <Avatar param={auth ? auth.idUser : null} width={'50px'} height={'50px'} />
                     <span className='text-white text-start flex-wrap' >{Name}</span>
                 </div>
-            </Link>
+            </Link> */}
             <hr className='text-white' />
             <ul className='navbar-nav d-flex flex-column text-start'>
-                <li className='nav-item w-100 pointer'>
+                {/* <li className='nav-item w-100 pointer'>
                     <Link href={`/users/${auth?.idUser}`} passHref >
                         <div className='nav-link nav-link-span text-light item-option'>
                             <i className="fa-solid fa-user-lock mx-3" style={{ height: '16px', width: '16px' }}></i>
                             Tu Información
                         </div>
                     </Link>
-                </li>
+                </li> */}
                 <li className='nav-item w-100 pointer' onClick={() => logout()} >
                     <a className='nav-link nav-link-span text-light item-option'>
                         <i className="bi bi-box-arrow-left mx-3" style={{ height: '16px', width: '16px' }}></i>

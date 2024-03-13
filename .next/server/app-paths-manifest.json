@@ -1,8 +1,0 @@
-{
-  "/not-found": "app/not-found.js",
-  "/(Login)/login/page": "app/(Login)/login/page.js",
-  "/guest/[machineId]/page": "app/guest/[machineId]/page.js",
-  "/(AdminPanel)/page": "app/(AdminPanel)/page.js",
-  "/(AdminPanel)/machine/page": "app/(AdminPanel)/machine/page.js",
-  "/(AdminPanel)/machine/[machineId]/page": "app/(AdminPanel)/machine/[machineId]/page.js"
-}

@@ -8,7 +8,7 @@ const MachineGuestImages = ({ param, width, height, alt }) => {
     const { image } = useMachineGuestImage(param)
 
   return (
-    <div className='machineImg' style={{ width: `${width}`, height: `${height}` }}>
+    <div className='machineImg img-fluid' style={{ width: `${width}`, height: `${height}` }}>
             <Image alt={`${alt}`} src={image ? image : NoAvatar} fill sizes="min-width:100px" />
         </div>
   )

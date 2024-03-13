@@ -17,10 +17,13 @@ const MachineForm = (props) => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const processData = async (data) => {
-              
-        await dispatch(createMachineAction(data))
-        console.log(data);
-        
+        const finalData = {
+            ...data,
+            certificado: data?.certificado[0],
+            foto_equipo: data?.foto_equipo[0],
+            foto_etiqueta_calibracion: data?.foto_etiqueta_calibracion[0]
+        }
+        await dispatch(createMachineAction(finalData))
         setShow(false);
     }
 
@@ -110,14 +113,21 @@ const MachineForm = (props) => {
                         <span className='text-danger text-small d-block mb-2'>{errors?.comments?.message}</span>
                     </div>
                     <div className='d-flex flex-column w-100 ms-2'>
-                        <label className='input-label'><span className="color-primary h5">*</span>  Liga Certificado</label>
-                        <input name='liga_certificado' type="text" placeholder='Liga de Certificado' className='form-control my-2' {...register("liga_certificado", { required: { value: true, message: 'El Liga de certificado es obligatorio' }, minLength: { value: 2, message: "Min lenght 2" } })} />
-                        <span className='text-danger text-small d-block mb-2'>{errors?.liga_certificado?.message}</span>
+                        <label className="form-label">Subir Certificado</label>
+                        <input name='certificado' type='file' className='form-control' {...register("certificado", { required: { value: true, message: 'El certificado es obligatorio' } })} />
                     </div>
-                    {/* 3 archivos:
-                    -foto equipo
-                    -foto etiqueta
-                    -certificado pdf */}
+                    
+                </div>
+                <div className='d-flex flex-between w-100'>
+                    <div className='d-flex flex-column w-100 ms-2'>
+                        <label className="form-label">Subir Foto Equipo</label>
+                        <input name='foto_equipo' type='file' className='form-control' {...register("foto_equipo", { required: { value: true, message: 'La Foto del equipo es obligatoris' } })} />
+                    </div>
+                    <div className='d-flex flex-column w-100 ms-2'>
+                        <label className="form-label">Subir Foto Etiqueta Calibracion</label>
+                        <input name='foto_etiqueta_calibracion' type='file' className='form-control' {...register("foto_etiqueta_calibracion", { required: { value: true, message: 'La foto de la etiqueta es obligatoria' } })} />
+                    </div>
+                    
                 </div>
                 <CreateButtons />
             </form>
